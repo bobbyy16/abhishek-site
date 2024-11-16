@@ -30,13 +30,16 @@ const Blogs = () => {
           }
         `;
 
-        const response = await fetch("http://localhost:5000/hashnode", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ query }),
-        });
+        const response = await fetch(
+          "https://hashnode-backend.onrender.com/hashnode",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ query }),
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch blogs");

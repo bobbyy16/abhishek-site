@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #adf0d4;
+  --secondary-color: #1fd8a4;
+  --bg-color: #0d1512;
+}
+
+body {
+  margin: 0 auto;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  padding: 14px;
+}
+
+.darkerText {
+  color: var(--secondary-color);
+}

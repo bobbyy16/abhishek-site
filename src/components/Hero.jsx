@@ -97,7 +97,7 @@ const Hero = () => {
       <br />
       <div className="mt-4 flex flex-col lg:flex-row gap-4 underline darkerText">
         <a
-          href="https://www.github.com/bobbyy16"
+          href="https://drive.google.com/file/d/1o1MxfFGQOay7rpOI6Jk2obaWJCOzL3zn/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 hover:text-primary-color"

@@ -6,21 +6,23 @@ const Blogs = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const query = `
-          {
-            user(username: "bobbyy16") {
-              publications(first: 1) {
-                edges {
-                  node {
-                    posts(first: 6) {
-                      edges {
-                        node {
-                          title
-                          brief
-                          slug
-                        }
+    fetchBlogs();
+  }, [blogs]);
+
+  const fetchBlogs = async () => {
+    try {
+      const query = `
+        {
+          user(username: "bobbyy16") {
+            publications(first: 1) {
+              edges {
+                node {
+                  posts(first: 6) {
+                    edges {
+                      node {
+                        title
+                        brief
+                        slug
                       }
                     }
                   }
@@ -28,43 +30,41 @@ const Blogs = () => {
               }
             }
           }
-        `;
-
-        const response = await fetch(
-          "https://hashnode-backend.onrender.com/hashnode",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ query }),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch blogs");
         }
+      `;
 
-        const data = await response.json();
-
-        if (data.errors) {
-          console.error("GraphQL errors:", data.errors);
-          throw new Error(data.errors.map((error) => error.message).join(", "));
+      const response = await fetch(
+        "https://hashnode-backend.onrender.com/hashnode",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ query }),
         }
+      );
 
-        const postsArray =
-          data?.data?.user?.publications?.edges[0]?.node?.posts?.edges.map(
-            (edge) => edge.node
-          ) || [];
-        setBlogs(postsArray);
-      } catch (err) {
-        console.error("Error details:", err);
-        setError(err.message);
+      if (!response.ok) {
+        throw new Error("Failed to fetch blogs");
       }
-    };
 
-    fetchBlogs();
-  }, []);
+      const data = await response.json();
+
+      if (data.errors) {
+        console.error("GraphQL errors:", data.errors);
+        throw new Error(data.errors.map((error) => error.message).join(", "));
+      }
+
+      const postsArray =
+        data?.data?.user?.publications?.edges[0]?.node?.posts?.edges.map(
+          (edge) => edge.node
+        ) || [];
+      setBlogs(postsArray);
+    } catch (err) {
+      console.error("Error details:", err);
+      setError(err.message);
+    }
+  };
 
   return (
     <div id="blogs" className="mt-8">

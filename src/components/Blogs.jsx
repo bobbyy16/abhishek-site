@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -7,7 +7,7 @@ const Blogs = () => {
 
   useEffect(() => {
     fetchBlogs();
-  }, [blogs]);
+  }, []);
 
   const fetchBlogs = async () => {
     try {
@@ -66,12 +66,14 @@ const Blogs = () => {
     }
   };
 
+  const memoizedBlogs = useMemo(() => blogs, [blogs]);
+
   return (
     <div id="blogs" className="mt-8">
       <h1 className="text-2xl font-bold mb-4">Latest Blogs:</h1>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {blogs.map((blog, index) => (
+        {memoizedBlogs.map((blog, index) => (
           <div
             key={index}
             className="border p-4 rounded shadow-md hover:shadow-lg transition"

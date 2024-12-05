@@ -86,13 +86,7 @@ const Hero = () => {
         Hi, I'm Abhishek K, a passionate software engineer dedicated to crafting
         seamless digital experiences with code. I specialize in building
         full-stack applications and love exploring innovative solutions using
-        the latest technologies. With a keen eye for detail and a commitment to
-        clean, efficient code, I transform ideas into robust digital solutions.
-        Whether it's creating intuitive user interfaces or architecting scalable
-        backend systems, I'm always ready to tackle new challenges. I'm
-        currently open to exciting project opportunities and would love to help
-        bring your ideas to life. Let's collaborate and build something amazing
-        together!
+        the latest technologies.
       </h1>
       <br />
       <div className="mt-4 flex flex-col lg:flex-row gap-4 underline darkerText">

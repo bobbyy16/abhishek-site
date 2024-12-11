@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import React, { useEffect, useState, useMemo } from "react";
+import { motion } from "framer-motion";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -69,13 +70,33 @@ const Blogs = () => {
   const memoizedBlogs = useMemo(() => blogs, [blogs]);
 
   return (
-    <div id="blogs" className="mt-8">
-      <h1 className="text-2xl font-bold mb-4">Latest Blogs:</h1>
+    <motion.div
+      id="blogs"
+      className="mt-8"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.h1
+        initial={{ x: -50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="text-2xl font-bold mb-4"
+      >
+        Latest Blogs:
+      </motion.h1>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {memoizedBlogs.map((blog, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+            }}
+            whileHover={{ scale: 1.05 }}
             className="border p-4 rounded shadow-md hover:shadow-lg transition"
           >
             <h2 className="text-lg font-bold mb-2">{blog.title}</h2>
@@ -83,23 +104,32 @@ const Blogs = () => {
               {blog.brief}
             </p>
             <div className="mt-4">
-              <a
+              <motion.a
                 href={`https://abhishek-software-engineer.hashnode.dev/${blog.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block hover:text-white border-2  hover:darkerText rounded-lg transition-all duration-300 px-4 py-2 font-medium"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="inline-block hover:text-white border-2 hover:darkerText rounded-lg transition-all duration-300 px-4 py-2 font-medium"
               >
                 Read More
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-      <div className="flex justify-center mt-8">
-        <a
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex justify-center mt-8"
+      >
+        <motion.a
           href="https://abhishek-software-engineer.hashnode.dev"
           target="_blank"
           rel="noopener noreferrer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           className="group flex items-center gap-2 px-6 py-3 text-primary-color hover:text-white border-2 border-primary-color hover:bg-primary-color rounded-lg transition-all duration-300 font-medium"
         >
           View All Blogs
@@ -107,9 +137,9 @@ const Blogs = () => {
             size={20}
             className="group-hover:transform group-hover:translate-x-1 transition-transform"
           />
-        </a>
-      </div>
-    </div>
+        </motion.a>
+      </motion.div>
+    </motion.div>
   );
 };
 

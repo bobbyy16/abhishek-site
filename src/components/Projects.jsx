@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
 const Projects = () => {
@@ -24,12 +25,32 @@ const Projects = () => {
   }, []);
 
   return (
-    <div id="projects" className="mt-8">
-      <h1 className="text-2xl font-bold mb-4">Latest Projects: </h1>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      id="projects"
+      className="mt-8"
+    >
+      <motion.h1
+        initial={{ x: -50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="text-2xl font-bold mb-4"
+      >
+        Latest Projects:
+      </motion.h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {latestRepos.map((repo) => (
-          <div
+        {latestRepos.map((repo, index) => (
+          <motion.div
             key={repo.id}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.5,
+            }}
+            whileHover={{ scale: 1.05 }}
             className="border p-4 rounded shadow-md hover:shadow-lg transition"
           >
             <a
@@ -47,14 +68,21 @@ const Projects = () => {
             <p className="text-sm text-gray-400">
               Created on: {new Date(repo.created_at).toLocaleDateString()}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
-      <div className="flex justify-center mt-8">
-        <a
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex justify-center mt-8"
+      >
+        <motion.a
           href="https://github.com/bobbyy16?tab=repositories"
           target="_blank"
           rel="noopener noreferrer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           className="group flex items-center gap-2 px-6 py-3 text-primary-color hover:text-white border-2 border-primary-color hover:bg-primary-color rounded-lg transition-all duration-300 font-medium"
         >
           View All Projects
@@ -62,9 +90,9 @@ const Projects = () => {
             size={20}
             className="group-hover:transform group-hover:translate-x-1 transition-transform"
           />
-        </a>
-      </div>
-    </div>
+        </motion.a>
+      </motion.div>
+    </motion.div>
   );
 };
 

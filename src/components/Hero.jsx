@@ -141,7 +141,7 @@ const Hero = () => {
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="leading-relaxed text-lg"
+        className="leading-relaxed"
       >
         Hi, I'm <span className="font-bold darkerText">Abhishek K</span>, a
         passionate software engineer dedicated to crafting seamless digital

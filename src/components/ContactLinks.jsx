@@ -12,7 +12,7 @@ const ContactLinks = () => {
     >
       {/* Resume Link */}
       <motion.a
-        href="https://drive.google.com/file/d/1o1MxfFGQOay7rpOI6Jk2obaWJCOzL3zn/view?usp=sharing"
+        href="https://drive.google.com/file/d/1e2dLHAnjE2bcymV048x7QIUW8KIbFaAi/view?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
         whileHover={{

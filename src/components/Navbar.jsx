@@ -1,36 +1,24 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 const Navbar = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="flex justify-between items-center py-4 px-6 darkerText"
-    >
-      <motion.h2
-        whileHover={{ scale: 1.1 }}
-        className="text-xl font-bold text-primary-color cursor-pointer"
-      >
+    <div className="flex justify-between items-center py-4 px-6 darkerText opacity-100 transform translate-y-0 transition-all duration-500">
+      <h2 className="text-xl font-bold text-primary-color cursor-pointer hover:scale-110 transition-transform duration-200">
         AB
-      </motion.h2>
+      </h2>
       <div className="flex gap-4 sm:gap-6 md:gap-10">
-        {["About", "Projects", "Blogs"].map((item, index) => (
-          <motion.a
+        {["About", "Projects"].map((item, index) => (
+          <a
             key={item}
             href={`#${item.toLowerCase()}`}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.2, duration: 0.5 }}
-            whileHover={{ scale: 1.1 }}
-            className="text-secondary-color hover:text-gray-500 transition-colors duration-200"
+            className="text-secondary-color hover:text-gray-500 transition-all duration-200 hover:scale-110 transform opacity-100"
+            style={{ animationDelay: `${index * 200}ms` }}
           >
             {item}
-          </motion.a>
+          </a>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

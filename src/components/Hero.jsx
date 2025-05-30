@@ -106,7 +106,7 @@ const Hero = () => {
             className="font-semibold underline text-primary-color hover:text-secondary-color flex items-center gap-1 animate-pulse hover:animate-none  px-2 py-1 rounded-md   shadow-lg hover:shadow-xl transition-all duration-300"
           >
             DM
-            <ArrowRightCircle className="text-primary-color hover:text-secondary-color animate-bounce" />
+            <ArrowRightCircle className="text-sm text-primary-color hover:text-secondary-color animate-bounce" />
           </a>
         </span>
       </h1>

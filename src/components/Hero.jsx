@@ -11,7 +11,7 @@ import {
   ArrowRightCircle,
 } from "lucide-react";
 import Projects from "./Projects";
-import Blogs from "./Blogs";
+// import Blogs from "./Blogs";
 import ContactLinks from "./ContactLinks";
 
 const Hero = () => {
@@ -54,7 +54,7 @@ const Hero = () => {
         className="text-3xl font-bold"
       >
         {userData.name}
-      </motion.h1>
+      </motion.h3>
       <motion.h3
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -71,11 +71,11 @@ const Hero = () => {
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
         >
-          <img
+          {/* <img
             src={userData.avatar_url}
             alt="Profile Picture"
             className="rounded-full w-40"
-          />
+          /> */}
         </motion.div>
         <motion.div
           initial={{ x: 50, opacity: 0 }}
@@ -155,26 +155,31 @@ const Hero = () => {
           transition={{ delay: 1, duration: 0.5 }}
           className="darkerText inline-flex items-center gap-2 px-2"
         >
-          <a
+          <motion.a
             href="https://x.com/bobsstwt"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:text-secondary-color"
+            initial={{ scale: 1 }}
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{
+              duration: 1,
+              repeat: 2,
+              ease: "easeInOut",
+              delay: 1.5,
+            }}
+            className="font-semibold underline text-primary-color hover:text-secondary-color flex items-center gap-1"
           >
             DM
-          </a>
-          <ArrowRightCircle className="text-primary-color hover:text-secondary-color" />
+            <ArrowRightCircle className="text-primary-color hover:text-secondary-color" />
+          </motion.a>
         </motion.span>
       </motion.h1>
       <br />
       <ContactLinks />
-
       <br />
-
       <Projects />
       <br />
-
-      <Blogs />
+      {/* <Blogs /> */}
     </motion.div>
   );
 };

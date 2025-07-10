@@ -10,6 +10,7 @@ import {
   ArrowRightCircle,
 } from "lucide-react";
 import Projects from "./Projects";
+import Skills from "./Skills";
 // import Blogs from "./Blogs";
 import ContactLinks from "./ContactLinks";
 
@@ -125,6 +126,9 @@ const Hero = () => {
       <ContactLinks />
       <br />
       <Projects />
+      <br />
+      <Skills />
+
       <br />
       {/* <Blogs /> */}
     </div>
